@@ -21,3 +21,13 @@ class StringHelper:
                 sp = ''
             str += l +sp
         return  str
+
+
+
+
+
+class TP_Test(unittest.TestCase):
+
+    def test_join(self):
+        list = ['rouge','vert','blanc']
+        self.assertEqual(StringHelper.Joindre(self,list,'-'),'rouge-vert-blanc')
