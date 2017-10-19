@@ -41,6 +41,25 @@ class StringHelper:
         list.append(String[i:j])
         return list
 
+    def eleminermotvide(self, String):
+            '''
+
+            :param String: chaine de caractere
+            :return: la chaine String on suprimant les mot vide (et,ou,a,non)
+            '''
+            v = " "
+            list = StringHelper.fractionner(0, String, ' ')
+            for x in ['ou', 'et', 'a', 'non']:
+                if x in list:
+                    list.remove(x)
+            str = ""
+            sp = ' '
+            for i in list:
+                if i == list[-1]:
+                    sp = ''
+                str += i + sp
+
+            return str
 
 
 
@@ -53,3 +72,7 @@ class TP_Test(unittest.TestCase):
         list = ['rouge', 'vert', 'blanc']
         str = 'rouge,vert,blanc'
         self.assertEqual(StringHelper.fractionner(self, str, ','), list)
+    def test_elim_V(self):
+        str1 = 'rouge et blanc ou vert '
+        str2 = "rouge blanc vert "
+        self.assertEqual(StringHelper.eleminermotvide(self, str1), str2)
